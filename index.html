@@ -1,135 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mango Royale</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mango Store</title>
 
-<style>
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #0f0f0f;
-  color: white;
-}
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff8e1;
+    }
 
-/* HEADER */
-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-  background: black;
-}
+    header {
+      background: #ff9800;
+      padding: 15px;
+      text-align: center;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
 
-header h1 {
-  color: gold;
-  margin: 0;
-}
+    /* LOGIN BOX */
+    #authBox {
+      text-align: center;
+      margin: 20px;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
 
-/* HERO */
-.hero {
-  text-align: center;
-  padding: 80px 20px;
-  background: linear-gradient(to bottom, #000, #1a1a1a);
-}
+    input {
+      padding: 10px;
+      width: 80%;
+      margin-top: 10px;
+    }
 
-.hero h2 {
-  font-size: 40px;
-  margin-bottom: 10px;
-}
+    button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      background: #ff9800;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
 
-.hero p {
-  color: #bbb;
-}
+    .hero {
+      text-align: center;
+      padding: 40px 20px;
+    }
 
-.btn {
-  margin-top: 20px;
-  padding: 12px 30px;
-  background: gold;
-  color: black;
-  border: none;
-  border-radius: 30px;
-  font-weight: bold;
-  cursor: pointer;
-}
+    .hero h1 {
+      font-size: 32px;
+      color: #333;
+    }
 
-/* PRODUCTS */
-.products {
-  display: grid;
-  grid-template-columns: 1fr;
-  padding: 20px;
-}
+    .hero p {
+      color: #666;
+      margin-top: 10px;
+    }
 
-.card {
-  background: #1a1a1a;
-  margin: 10px 0;
-  padding: 20px;
-  border-radius: 15px;
-  transition: 0.3s;
-}
+    .products {
+      padding: 20px;
+    }
 
-.card:hover {
-  transform: scale(1.03);
-  background: #222;
-}
+    .card {
+      background: white;
+      padding: 15px;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
 
-.card h3 {
-  color: gold;
-}
-
-.price {
-  margin-top: 10px;
-  color: #ccc;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: black;
-  color: #777;
-}
-</style>
-
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #333;
+      color: white;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-  <h1>Mango Royale 🥭</h1>
+  Mango Store 🥭
 </header>
 
+<!-- 🔥 LOGIN BOX ADDED HERE -->
+<div id="authBox">
+  <h3>Login 🥭</h3>
+
+  <input type="email" id="email" placeholder="Email"><br>
+  <input type="password" id="password" placeholder="Password"><br>
+
+  <button onclick="signUp()">Sign Up</button>
+  <button onclick="login()">Login</button>
+
+  <p id="msg"></p>
+</div>
+
 <section class="hero">
-  <h2>Premium Mango Experience</h2>
-  <p>Handpicked luxury mangoes delivered to your door</p>
-  <a href="https://wa.me/917760714141" target="_blank">
-    <button class="btn">Order on WhatsApp</button>
-  </a>
+  <h1>Fresh & Juicy Mangoes</h1>
+  <p>Order the best quality mangoes directly to your home</p>
+  <button class="btn">Order Now</button>
 </section>
 
 <section class="products">
-
   <div class="card">
     <h3>Alphonso Mango</h3>
-    <p class="price">₹1200 / dozen</p>
+    <p>₹1200 per dozen</p>
   </div>
 
   <div class="card">
     <h3>Kesar Mango</h3>
-    <p class="price">₹900 / dozen</p>
+    <p>₹900 per dozen</p>
   </div>
 
   <div class="card">
     <h3>Dasheri Mango</h3>
-    <p class="price">₹700 / dozen</p>
+    <p>₹700 per dozen</p>
   </div>
-
 </section>
 
 <footer>
-  Contact: +91 7760714141<br>
-  © 2026 Mango Royale | Premium Fruits
+  © 2026 Mango Store
 </footer>
+
+<!-- 🔥 SCRIPT ADDED HERE -->
+<script>
+function signUp() {
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
+
+  if (!email || !password) {
+    document.getElementById("msg").innerText = "Fill all fields!";
+    return;
+  }
+
+  localStorage.setItem(email, password);
+  document.getElementById("msg").innerText = "Account Created ✅";
+}
+
+function login() {
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
+
+  let storedPass = localStorage.getItem(email);
+
+  if (storedPass === password) {
+    document.getElementById("msg").innerText = "Logged In 🎉";
+    localStorage.setItem("loggedInUser", email);
+    showWelcome(email);
+  } else {
+    document.getElementById("msg").innerText = "Invalid login ❌";
+  }
+}
+
+function showWelcome(email) {
+  document.getElementById("authBox").innerHTML =
+    `<h3>Welcome ${email} 🥭</h3>
+     <button onclick="logout()">Logout</button>`;
+}
+
+function logout() {
+  localStorage.removeItem("loggedInUser");
+  location.reload();
+}
+
+window.onload = function () {
+  let user = localStorage.getItem("loggedInUser");
+  if (user) {
+    showWelcome(user);
+  }
+};
+</script>
 
 </body>
 </html>
